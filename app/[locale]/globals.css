@@ -1,0 +1,139 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* HSL values: Hue Saturation Lightness */
+    --bg-secondary: 229 14% 90%; /* Light gray for light mode */
+  }
+
+  .dark {
+    --background: 0 0% 0%; /* Changes when .dark class is on <html> */
+    --bg-secondary: 217 33% 10%; /* Dark gray for dark mode */
+  }
+
+  body {
+    background-color: hsl(var(--background)); /* Uses the CSS variable */
+  }
+}
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+@layer components {
+  .btn-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-full transition-all hover:shadow-lg;
+  }
+
+  .btn-outline-light {
+    @apply border-2 border-white text-white rounded-full font-semibold transition-all hover:bg-white hover:text-blue-900;
+  }
+}
+
+@layer utilities {
+  @keyframes client-marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-client-marquee {
+    animation: client-marquee 25s linear infinite;
+    width: max-content;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-client-marquee {
+      animation-duration: 0s;
+    }
+    .animate-blink {
+      animation: none;
+    }
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  @keyframes blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+}

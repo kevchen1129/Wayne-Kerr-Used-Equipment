@@ -1,0 +1,99 @@
+{
+  "navigation": {
+    "home": "홈",
+    "about": "회사 소개",
+    "products": "제품",
+    "instruments": "장비",
+    "accessories": "액세서리",
+    "softwares": "소프트웨어",
+    "usedEquipment": "Used Equipment",
+    "tradein": "보상 판매",
+    "support": "지원",
+    "contact": "문의하기",
+    "countries": "국가",
+    "newBadge": "신규"
+  },
+  "footer": {
+    "tagline": "1946년부터 이어온 정밀 부품 측정의 선두주자",
+    "products": "제품",
+    "company": "회사",
+    "contact": "문의하기",
+    "phone": "+82-2-543-7773",
+    "email": "john_in@waynekerr.co.kr",
+    "locations": "#506, Sharmant S B/D, 15-4, Jamwon-dong, Seocho-gu, Seoul, 137-902, Korea",
+    "rights": "© 2026 Wayne Kerr Electronics. 모든 권리 보유."
+  },
+  "countries": {
+    "us": "US",
+    "uk": "UK",
+    "germany": "Deutschland",
+    "denmark": "Danmark",
+    "china": "中国",
+    "japan": "日本",
+    "taiwan": "台灣",
+    "india": "भारत",
+    "korea": "한국",
+    "poland": "Polska"
+  },
+  "usedEquipment": {
+    "hero": {
+      "badge": "Wayne Kerr Refurbished Equipment",
+      "title": "Factory recalibrated and refurbished Wayne Kerr equipment.",
+      "subtitle": "Like-new presentation, OEM follow-up support, and a 1-year warranty across carefully prepared Wayne Kerr measurement platforms.",
+      "viewInventory": "View Inventory",
+      "requestAvailability": "Request Availability",
+      "builtFor": "What this page is built for",
+      "trustPoints": [
+        "Factory recalibrated by Wayne Kerr before release",
+        "Refurbished to present like new for customer-facing delivery",
+        "Backed by a 1-year warranty with Wayne Kerr follow-up support"
+      ],
+      "certifiedPromise": "Certified Promise",
+      "certifiedTitle": "Recalibrated, refurbished, and protected by a bold 1-year warranty.",
+      "certifiedDescription": "Every listed unit is presented as a Wayne Kerr premium used system, prepared for customer-facing delivery with OEM follow-up support."
+    },
+    "inventory": {
+      "title": "Browse Equipment",
+      "description": "Each listing represents one individual refurbished unit. Once a unit is sold, that listing is no longer available.",
+      "count": "Total {count} units available",
+      "warrantyBadge": "1 Year Warranty",
+      "price": "Price",
+      "stockRef": "Stock Ref",
+      "singleUnitAvailability": "Single unit availability",
+      "details": "Details",
+      "contactUs": "Contact Us"
+    },
+    "detail": {
+      "back": "Back to used equipment",
+      "miniWarranty": "Warranty",
+      "warrantyBadge": "1 Year Warranty",
+      "imageCaption": "Factory recalibrated, refurbished, and listed as one individual unit.",
+      "oneUnitPerListing": "One unit per listing",
+      "displayPrice": "Display price",
+      "condition": "Condition",
+      "warranty": "Warranty",
+      "availability": "Availability",
+      "stockRef": "Stock Ref",
+      "requestAvailability": "Request availability",
+      "openDatasheet": "Open datasheet",
+      "keyHighlights": "Key Highlights",
+      "prepared": "Wayne Kerr Prepared",
+      "compatibility": "Compatibility"
+    },
+    "sticky": {
+      "label": "Wayne Kerr Premium Used",
+      "from": "From",
+      "requestAvailability": "Request availability"
+    },
+    "contactPrefill": {
+      "intro": "I am interested in this refurbished equipment.",
+      "model": "Model",
+      "stockRef": "Stock Ref",
+      "request": "Please provide pricing and availability."
+    },
+    "contact": {
+      "close": "Close",
+      "goBack": "Go back"
+    }
+  }
+}

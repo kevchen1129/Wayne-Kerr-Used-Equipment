@@ -1,0 +1,99 @@
+{
+  "navigation": {
+    "home": "首頁",
+    "about": "關於我們",
+    "products": "產品",
+    "instruments": "儀器",
+    "accessories": "夾具",
+    "softwares": "軟體",
+    "usedEquipment": "翻新設備",
+    "tradein": "以舊換新",
+    "support": "支援",
+    "contact": "聯絡我們",
+    "countries": "國家",
+    "newBadge": "新"
+  },
+  "footer": {
+    "tagline": "Leaders in precision component measurement since 1946",
+    "products": "產品",
+    "company": "公司",
+    "contact": "聯絡方式",
+    "phone": "+886(02)-2915-8990",
+    "email": "sales@waynekerrtest.com.tw",
+    "locations": "新北市新店區北新路2段228巷21號1樓",
+    "rights": "© 2026 Wayne Kerr Electronics. 版權所有。"
+  },
+  "countries": {
+    "us": "US",
+    "uk": "UK",
+    "germany": "Deutschland",
+    "denmark": "Danmark",
+    "china": "中国",
+    "japan": "日本",
+    "taiwan": "台灣",
+    "india": "भारत",
+    "korea": "한국",
+    "poland": "Polska"
+  },
+  "usedEquipment": {
+    "hero": {
+      "badge": "Wayne Kerr 翻新設備",
+      "title": "原廠重新校準與翻新的 Wayne Kerr 設備。",
+      "subtitle": "提供近新品外觀、原廠後續支援，以及 1 年保固，適用於精心整理的 Wayne Kerr 量測平台。",
+      "viewInventory": "查看庫存",
+      "requestAvailability": "詢問庫存",
+      "builtFor": "此頁面用途",
+      "trustPoints": [
+        "出貨前由 Wayne Kerr 原廠重新校準",
+        "翻新整理後可作為客戶展示與交付使用",
+        "提供 1 年保固與 Wayne Kerr 後續支援"
+      ],
+      "certifiedPromise": "認證承諾",
+      "certifiedTitle": "重新校準、翻新整理，並提供明確的 1 年保固。",
+      "certifiedDescription": "每一台上架設備都以 Wayne Kerr 原廠翻新設備標準整理，適合直接面向客戶展示與交付，並提供原廠後續支援。"
+    },
+    "inventory": {
+      "title": "瀏覽設備",
+      "description": "每一筆列表都代表一台獨立翻新設備；若設備售出，該筆列表就會下架。",
+      "count": "共 {count} 台現貨",
+      "warrantyBadge": "1 年保固",
+      "price": "價格",
+      "stockRef": "庫存編號",
+      "singleUnitAvailability": "單台現貨",
+      "details": "查看詳情",
+      "contactUs": "聯絡我們"
+    },
+    "detail": {
+      "back": "返回二手設備列表",
+      "miniWarranty": "保固",
+      "warrantyBadge": "1 年保固",
+      "imageCaption": "已完成原廠重新校準與翻新，並以單台獨立設備方式上架。",
+      "oneUnitPerListing": "此列表為單台設備",
+      "displayPrice": "參考價格",
+      "condition": "設備狀態",
+      "warranty": "保固",
+      "availability": "供貨狀態",
+      "stockRef": "庫存編號",
+      "requestAvailability": "詢問庫存",
+      "openDatasheet": "開啟型錄",
+      "keyHighlights": "重點特色",
+      "prepared": "Wayne Kerr 整備內容",
+      "compatibility": "相容性"
+    },
+    "sticky": {
+      "label": "Wayne Kerr 原廠翻新設備",
+      "from": "價格",
+      "requestAvailability": "詢問庫存"
+    },
+    "contactPrefill": {
+      "intro": "我對這台翻新設備有興趣。",
+      "model": "型號",
+      "stockRef": "庫存編號",
+      "request": "請提供價格與供貨資訊。"
+    },
+    "contact": {
+      "close": "關閉",
+      "goBack": "返回上一頁"
+    }
+  }
+}

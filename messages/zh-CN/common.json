@@ -1,0 +1,99 @@
+{
+  "navigation": {
+    "home": "首页",
+    "about": "关于我们",
+    "products": "产品",
+    "instruments": "仪器",
+    "accessories": "配件",
+    "softwares": "软件",
+    "usedEquipment": "翻新设备",
+    "tradein": "以旧换新",
+    "support": "支持",
+    "contact": "联系我们",
+    "countries": "国家",
+    "newBadge": "新"
+  },
+  "footer": {
+    "tagline": "自1946年以来精密元件测量的领导者",
+    "products": "产品",
+    "company": "公司",
+    "contact": "联系方式",
+    "phone": "13825257120",
+    "email": "jimmy.yang@waynekerr.net",
+    "locations": "深圳市稳科电子仪器有限公司，深圳市龙华新区龙观东路荣群大厦1209室",
+    "rights": "© 2026 Wayne Kerr Electronics. 版权所有。"
+  },
+  "countries": {
+    "us": "US",
+    "uk": "UK",
+    "germany": "Deutschland",
+    "denmark": "Danmark",
+    "china": "中国",
+    "japan": "日本",
+    "taiwan": "台灣",
+    "india": "भारत",
+    "korea": "한국",
+    "poland": "Polska"
+  },
+  "usedEquipment": {
+    "hero": {
+      "badge": "Wayne Kerr 翻新设备",
+      "title": "原厂重新校准与翻新的 Wayne Kerr 设备。",
+      "subtitle": "提供近新品外观、原厂后续支持，以及 1 年保修，适用于精心整理的 Wayne Kerr 测量平台。",
+      "viewInventory": "查看库存",
+      "requestAvailability": "询问库存",
+      "builtFor": "此页面用途",
+      "trustPoints": [
+        "出货前由 Wayne Kerr 原厂重新校准",
+        "翻新整理后可作为客户展示与交付使用",
+        "提供 1 年保修与 Wayne Kerr 后续支持"
+      ],
+      "certifiedPromise": "认证承诺",
+      "certifiedTitle": "重新校准、翻新整理，并提供明确的 1 年保修。",
+      "certifiedDescription": "每一台上架设备都以 Wayne Kerr 原厂翻新设备标准整理，适合直接面向客户展示与交付，并提供原厂后续支持。"
+    },
+    "inventory": {
+      "title": "浏览设备",
+      "description": "每一条列表都代表一台独立翻新设备；若设备售出，该条列表就会下架。",
+      "count": "共 {count} 台现货",
+      "warrantyBadge": "1 年保修",
+      "price": "价格",
+      "stockRef": "库存编号",
+      "singleUnitAvailability": "单台现货",
+      "details": "查看详情",
+      "contactUs": "联系我们"
+    },
+    "detail": {
+      "back": "返回二手设备列表",
+      "miniWarranty": "保修",
+      "warrantyBadge": "1 年保修",
+      "imageCaption": "已完成原厂重新校准与翻新，并以单台独立设备方式上架。",
+      "oneUnitPerListing": "此列表为单台设备",
+      "displayPrice": "参考价格",
+      "condition": "设备状态",
+      "warranty": "保修",
+      "availability": "供货状态",
+      "stockRef": "库存编号",
+      "requestAvailability": "询问库存",
+      "openDatasheet": "打开型录",
+      "keyHighlights": "重点特色",
+      "prepared": "Wayne Kerr 整备内容",
+      "compatibility": "兼容性"
+    },
+    "sticky": {
+      "label": "Wayne Kerr 原厂翻新设备",
+      "from": "价格",
+      "requestAvailability": "询问库存"
+    },
+    "contactPrefill": {
+      "intro": "我对这台翻新设备有兴趣。",
+      "model": "型号",
+      "stockRef": "库存编号",
+      "request": "请提供价格与供货信息。"
+    },
+    "contact": {
+      "close": "关闭",
+      "goBack": "返回上一页"
+    }
+  }
+}

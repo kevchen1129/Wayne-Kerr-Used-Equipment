@@ -1,0 +1,76 @@
+{
+  "contact": {
+    "hero": {
+      "title": "Skontaktuj się z nami",
+      "subtitle": "Odpowiemy w ciągu jednego dnia roboczego"
+    },
+    "form": {
+      "fields": {
+        "name": {
+          "label": "Imię i nazwisko",
+          "placeholder": "Jan Kowalski"
+        },
+        "email": {
+          "label": "E-mail",
+          "placeholder": "jan@firma.com"
+        },
+        "phone": {
+          "label": "Numer telefonu",
+          "placeholder": "+48 000 000 000"
+        },
+        "company": {
+          "label": "Nazwa firmy",
+          "placeholder": "Acme Sp. z o.o."
+        },
+        "country": {
+          "label": "Kraj",
+          "placeholder": "Wybierz",
+          "options": {
+            "US": "Stany Zjednoczone",
+            "UK": "Wielka Brytania",
+            "TW": "Tajwan",
+            "CN": "Chiny",
+            "DE": "Niemcy",
+            "JP": "Japonia",
+            "KO": "Korea",
+            "SG": "Singapur",
+            "IN": "Indie",
+            "DK": "Dania",
+            "other": "Inny"
+          }
+        },
+        "topic": {
+          "label": "Temat",
+          "placeholder": "Wybierz",
+          "options": {
+            "pricing": "Zapytanie o cenę",
+            "trade-in": "Program odkupu / wymiany",
+            "calibration": "Usługa kalibracji",
+            "rental": "Usługa wynajmu",
+            "technical": "Konsultacja techniczna / dobór rozwiązania"
+          }
+        },
+        "model": {
+          "label": "Model",
+          "placeholder": "np. 6500B"
+        },
+        "message": {
+          "label": "Dodatkowe informacje",
+          "placeholder": "Opisz swoje wymagania lub pytania..."
+        }
+      },
+      "submit": {
+        "sending": "Wysyłanie...",
+        "default": "Wyślij zapytanie"
+      }
+    },
+    "toast": {
+      "title": "Zapytanie zostało wysłane!",
+      "message": "Otrzymaliśmy Twoje zapytanie ofertowe. Nasz zespół skontaktuje się z Tobą w ciągu 24 godzin."
+    },
+    "errors": {
+      "submitFailed": "Nie udało się wysłać zapytania. Spróbuj ponownie.",
+      "generic": "Wystąpił błąd. Spróbuj ponownie."
+    }
+  }
+}

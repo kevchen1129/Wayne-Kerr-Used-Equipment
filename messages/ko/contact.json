@@ -1,0 +1,77 @@
+{
+  "contact": {
+    "hero": {
+      "title": "문의하기",
+      "subtitle": "영업일 기준 1일 이내에 답변드리겠습니다"
+    },
+    "form": {
+      "fields": {
+        "name": {
+          "label": "이름",
+          "placeholder": "홍길동"
+        },
+        "email": {
+          "label": "이메일 주소",
+          "placeholder": "hong@company.com"
+        },
+        "phone": {
+          "label": "전화번호",
+          "placeholder": "+82-10-1234-5678"
+        },
+        "company": {
+          "label": "회사명",
+          "placeholder": "샘플 주식회사"
+        },
+        "country": {
+          "label": "국가",
+          "placeholder": "선택해주세요",
+          "options": {
+            "US": "미국",
+            "UK": "영국",
+            "TW": "대만",
+            "CN": "중국",
+            "DE": "독일",
+            "JP": "일본",
+            "KO": "대한민국",
+            "SG": "싱가포르",
+            "IN": "인도",
+            "DK": "덴마크",
+            "PL": "폴란드",
+            "other": "기타"
+          }
+        },
+        "topic": {
+          "label": "문의 주제",
+          "placeholder": "선택해주세요",
+          "options": {
+            "pricing": "가격 문의",
+            "trade-in": "보상 판매 프로그램",
+            "calibration": "교정 서비스",
+            "rental": "렌탈 서비스",
+            "technical": "기술 논의 / 솔루션 상담"
+          }
+        },
+        "model": {
+          "label": "모델",
+          "placeholder": "예: 6500B"
+        },
+        "message": {
+          "label": "추가 세부사항",
+          "placeholder": "요구 사항이나 문의 내용을 자세히 작성해주세요..."
+        }
+      },
+      "submit": {
+        "sending": "전송 중...",
+        "default": "문의 보내기"
+      }
+    },
+    "toast": {
+      "title": "문의가 정상적으로 전송되었습니다!",
+      "message": "견적 요청이 접수되었습니다. 24시간 이내에 담당 팀에서 연락드리겠습니다."
+    },
+    "errors": {
+      "submitFailed": "문의 전송에 실패했습니다. 다시 시도해주세요.",
+      "generic": "오류가 발생했습니다. 다시 시도해주세요."
+    }
+  }
+}

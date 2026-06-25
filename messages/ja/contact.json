@@ -1,0 +1,77 @@
+{
+  "contact": {
+    "hero": {
+      "title": "お問い合わせ",
+      "subtitle": "1営業日以内にご返信いたします"
+    },
+    "form": {
+      "fields": {
+        "name": {
+          "label": "お名前",
+          "placeholder": "山田太郎"
+        },
+        "email": {
+          "label": "メールアドレス",
+          "placeholder": "yamada@company.com"
+        },
+        "phone": {
+          "label": "電話番号",
+          "placeholder": "+81 (0) 3-1234-5678"
+        },
+        "company": {
+          "label": "会社名",
+          "placeholder": "株式会社サンプル"
+        },
+        "country": {
+          "label": "国",
+          "placeholder": "選択してください",
+          "options": {
+            "US": "アメリカ合衆国",
+            "UK": "イギリス",
+            "TW": "台湾",
+            "CN": "中国",
+            "DE": "ドイツ",
+            "JP": "日本",
+            "KO": "韓国",
+            "SG": "シンガポール",
+            "IN": "インド",
+            "DK": "デンマーク",
+            "PL": "ポーランド",
+            "other": "その他"
+          }
+        },
+        "topic": {
+          "label": "トピック",
+          "placeholder": "選択してください",
+          "options": {
+            "pricing": "価格のお問い合わせ",
+            "trade-in": "下取りプログラム",
+            "calibration": "校正サービス",
+            "rental": "レンタルサービス",
+            "technical": "技術的な議論 / ソリューション相談"
+          }
+        },
+        "model": {
+          "label": "モデル",
+          "placeholder": "例：6500B"
+        },
+        "message": {
+          "label": "追加詳細",
+          "placeholder": "ご要件やご質問を詳しくお書きください..."
+        }
+      },
+      "submit": {
+        "sending": "送信中...",
+        "default": "リクエストを送信"
+      }
+    },
+    "toast": {
+      "title": "リクエストが正常に送信されました！",
+      "message": "見積もりリクエストを受領いたしました。24時間以内に当社チームよりご連絡いたします。"
+    },
+    "errors": {
+      "submitFailed": "リクエストの送信に失敗しました。もう一度お試しください。",
+      "generic": "エラーが発生しました。もう一度お試しください。"
+    }
+  }
+}

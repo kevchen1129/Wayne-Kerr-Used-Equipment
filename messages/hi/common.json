@@ -1,0 +1,99 @@
+{
+  "navigation": {
+    "home": "होम",
+    "about": "हमारे बारे में",
+    "products": "उत्पाद",
+    "instruments": "उपकरण",
+    "accessories": "सहायक उपकरण",
+    "softwares": "सॉफ्टवेयर",
+    "usedEquipment": "Used Equipment",
+    "tradein": "ट्रेड-इन",
+    "support": "सहायता",
+    "contact": "संपर्क करें",
+    "countries": "देश",
+    "newBadge": "नया"
+  },
+  "footer": {
+    "tagline": "1946 से सटीक घटक मापन में अग्रणी",
+    "products": "उत्पाद",
+    "company": "कंपनी",
+    "contact": "संपर्क",
+    "phone": "+91 7875088122",
+    "email": "glhitech.india@gmail.com",
+    "locations": "F15, First floor, New Ashok Vihar, XLO corner, MIDC Ambad, Maharashtra, Nashik 422 010, India",
+    "rights": "© 2026 Wayne Kerr Electronics. सभी अधिकार सुरक्षित।"
+  },
+  "countries": {
+    "us": "US",
+    "uk": "UK",
+    "germany": "Deutschland",
+    "denmark": "Danmark",
+    "china": "中国",
+    "japan": "日本",
+    "taiwan": "台灣",
+    "india": "भारत",
+    "korea": "한국",
+    "poland": "Polska"
+  },
+  "usedEquipment": {
+    "hero": {
+      "badge": "Wayne Kerr Refurbished Equipment",
+      "title": "Factory recalibrated and refurbished Wayne Kerr equipment.",
+      "subtitle": "Like-new presentation, OEM follow-up support, and a 1-year warranty across carefully prepared Wayne Kerr measurement platforms.",
+      "viewInventory": "View Inventory",
+      "requestAvailability": "Request Availability",
+      "builtFor": "What this page is built for",
+      "trustPoints": [
+        "Factory recalibrated by Wayne Kerr before release",
+        "Refurbished to present like new for customer-facing delivery",
+        "Backed by a 1-year warranty with Wayne Kerr follow-up support"
+      ],
+      "certifiedPromise": "Certified Promise",
+      "certifiedTitle": "Recalibrated, refurbished, and protected by a bold 1-year warranty.",
+      "certifiedDescription": "Every listed unit is presented as a Wayne Kerr premium used system, prepared for customer-facing delivery with OEM follow-up support."
+    },
+    "inventory": {
+      "title": "Browse Equipment",
+      "description": "Each listing represents one individual refurbished unit. Once a unit is sold, that listing is no longer available.",
+      "count": "Total {count} units available",
+      "warrantyBadge": "1 Year Warranty",
+      "price": "Price",
+      "stockRef": "Stock Ref",
+      "singleUnitAvailability": "Single unit availability",
+      "details": "Details",
+      "contactUs": "Contact Us"
+    },
+    "detail": {
+      "back": "Back to used equipment",
+      "miniWarranty": "Warranty",
+      "warrantyBadge": "1 Year Warranty",
+      "imageCaption": "Factory recalibrated, refurbished, and listed as one individual unit.",
+      "oneUnitPerListing": "One unit per listing",
+      "displayPrice": "Display price",
+      "condition": "Condition",
+      "warranty": "Warranty",
+      "availability": "Availability",
+      "stockRef": "Stock Ref",
+      "requestAvailability": "Request availability",
+      "openDatasheet": "Open datasheet",
+      "keyHighlights": "Key Highlights",
+      "prepared": "Wayne Kerr Prepared",
+      "compatibility": "Compatibility"
+    },
+    "sticky": {
+      "label": "Wayne Kerr Premium Used",
+      "from": "From",
+      "requestAvailability": "Request availability"
+    },
+    "contactPrefill": {
+      "intro": "I am interested in this refurbished equipment.",
+      "model": "Model",
+      "stockRef": "Stock Ref",
+      "request": "Please provide pricing and availability."
+    },
+    "contact": {
+      "close": "Close",
+      "goBack": "Go back"
+    }
+  }
+}

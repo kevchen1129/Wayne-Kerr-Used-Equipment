@@ -1,0 +1,77 @@
+{
+  "contact": {
+    "hero": {
+      "title": "Kontaktieren Sie uns",
+      "subtitle": "Wir antworten innerhalb eines Werktages"
+    },
+    "form": {
+      "fields": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Max Mustermann"
+        },
+        "email": {
+          "label": "E-Mail",
+          "placeholder": "max@unternehmen.de"
+        },
+        "phone": {
+          "label": "Telefonnummer",
+          "placeholder": "+49 (0) 30 12345678"
+        },
+        "company": {
+          "label": "Firmenname",
+          "placeholder": "Musterfirma GmbH"
+        },
+        "country": {
+          "label": "Land",
+          "placeholder": "Bitte auswählen",
+          "options": {
+            "US": "Vereinigte Staaten",
+            "UK": "Vereinigtes Königreich",
+            "TW": "Taiwan",
+            "CN": "China",
+            "DE": "Deutschland",
+            "JP": "Japan",
+            "KO": "Korea",
+            "SG": "Singapur",
+            "IN": "Indien",
+            "DK": "Dänemark",
+            "PL": "Polen",
+            "other": "Sonstiges"
+          }
+        },
+        "topic": {
+          "label": "Thema",
+          "placeholder": "Bitte auswählen",
+          "options": {
+            "pricing": "Preisanfrage",
+            "trade-in": "Inzahlungnahme-Programm",
+            "calibration": "Kalibrierservice",
+            "rental": "Miet-Service",
+            "technical": "Technische Diskussion / Lösungsberatung"
+          }
+        },
+        "model": {
+          "label": "Modell",
+          "placeholder": "z.B. 6500B"
+        },
+        "message": {
+          "label": "Zusätzliche Details",
+          "placeholder": "Bitte beschreiben Sie Ihre Anforderungen oder Fragen..."
+        }
+      },
+      "submit": {
+        "sending": "Wird gesendet...",
+        "default": "Anfrage absenden"
+      }
+    },
+    "toast": {
+      "title": "Anfrage erfolgreich gesendet!",
+      "message": "Wir haben Ihre Angebotsanfrage erhalten. Unser Team wird sich innerhalb von 24 Stunden bei Ihnen melden."
+    },
+    "errors": {
+      "submitFailed": "Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+      "generic": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+    }
+  }
+}
