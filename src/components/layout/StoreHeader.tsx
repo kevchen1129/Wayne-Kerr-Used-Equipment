@@ -1,15 +1,40 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Globe2, Search, User } from "lucide-react";
 import LocaleSwitcher from "./LocaleSwitcher";
 
 export default function StoreHeader() {
   const params = useParams();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const locale = (params.locale as string) || "en";
   const t = useTranslations();
+  const [query, setQuery] = useState(searchParams.get("q") ?? "");
+
+  useEffect(() => {
+    setQuery(searchParams.get("q") ?? "");
+  }, [searchParams]);
+
+  function handleSearchSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const trimmedQuery = query.trim();
+    const nextParams = new URLSearchParams();
+
+    if (trimmedQuery) {
+      nextParams.set("q", trimmedQuery);
+    }
+
+    const targetUrl = nextParams.toString()
+      ? `/${locale}?${nextParams.toString()}#inventory`
+      : `/${locale}#inventory`;
+
+    router.push(targetUrl);
+  }
 
   return (
     <header className="sticky inset-x-0 top-0 z-40 border-b border-gray-200/80 bg-white/95 backdrop-blur">
@@ -32,25 +57,29 @@ export default function StoreHeader() {
               </div>
             </Link>
 
-            <div className="flex flex-1 items-center gap-3 lg:max-w-2xl lg:px-8">
+            <form
+              onSubmit={handleSearchSubmit}
+              className="flex flex-1 items-center gap-3 lg:max-w-2xl lg:px-8"
+            >
               <div className="flex flex-1 items-center rounded-2xl border border-gray-300 bg-white px-4 py-3 shadow-sm">
                 <Search size={18} className="mr-3 text-gray-400" />
                 <input
                   type="text"
-                  value={t("usedEquipment.inventory.title")}
-                  readOnly
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder={t("usedEquipment.inventory.title")}
                   aria-label="Search used equipment"
                   className="w-full bg-transparent text-base text-gray-500 outline-none"
                 />
               </div>
               <button
-                type="button"
+                type="submit"
                 className="inline-flex h-[50px] w-[50px] items-center justify-center rounded-2xl bg-blue-600 text-white transition-colors hover:bg-blue-700"
                 aria-label="Search"
               >
                 <Search size={18} />
               </button>
-            </div>
+            </form>
 
             <div className="flex items-center gap-3 self-end lg:self-auto">
               <button
