@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Suspense } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
@@ -8,8 +8,6 @@ import { routing } from "@/i18n/routing";
 import StoreHeader from "@/src/components/layout/StoreHeader";
 import StoreFooter from "@/src/components/layout/StoreFooter";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Wayne Kerr Official Refurbished Store",
@@ -41,9 +39,11 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={inter.className}>
+      <body>
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <StoreHeader />
+          <Suspense fallback={null}>
+            <StoreHeader />
+          </Suspense>
           {children}
           <StoreFooter />
         </NextIntlClientProvider>

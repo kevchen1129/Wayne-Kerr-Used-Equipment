@@ -14,6 +14,8 @@
 
   body {
     background-color: hsl(var(--background)); /* Uses the CSS variable */
+    font-family: "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei",
+      "Noto Sans SC", "Hiragino Sans", "Apple SD Gothic Neo", Arial, sans-serif;
   }
 }
 /* Custom scrollbar */

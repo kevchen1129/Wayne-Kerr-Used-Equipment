@@ -2,8 +2,18 @@ import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { isSpam } from "@/utils/spamDetection";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const testEmail = "sales@waynekerr.com";
+
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+
+  if (!apiKey) {
+    return null;
+  }
+
+  return new Resend(apiKey);
+}
+
 function getEmailByLocale(locale: string): string {
   const localeMap: Record<string, string> = {
     en: "sales@waynekerr.com",
@@ -77,6 +87,7 @@ function getLocaleRegion(locale: string): string {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    const resend = getResendClient();
 
     const spamCheck = isSpam(body);
     if (spamCheck.spam) {
@@ -87,24 +98,26 @@ export async function POST(request: Request) {
       });
 
       try {
-        await resend.emails.send({
-          from: "Wayne Kerr <sales@waynekerr.com>",
-          to: ["kcbs96199@gmail.com"],
-          subject: `[BLOCKED] Contact form (${spamCheck.reason})`,
-          html: `
-            <h2>Blocked submission</h2>
-            <p><strong>Reason:</strong> ${spamCheck.reason}</p>
-            <p><strong>Locale:</strong> ${body.locale || ""}</p>
-            <p><strong>Name:</strong> ${body.name || ""}</p>
-            <p><strong>Email:</strong> ${body.email || ""}</p>
-            <p><strong>Phone:</strong> ${body.phone || ""}</p>
-            <p><strong>Company:</strong> ${body.company || ""}</p>
-            <p><strong>Country:</strong> ${body.country || ""}</p>
-            <p><strong>Topic:</strong> ${body.topic || ""}</p>
-            <p><strong>Model:</strong> ${body.model || ""}</p>
-            <p><strong>Message:</strong> ${body.message || ""}</p>
-          `,
-        });
+        if (resend) {
+          await resend.emails.send({
+            from: "Wayne Kerr <sales@waynekerr.com>",
+            to: ["kcbs96199@gmail.com"],
+            subject: `[BLOCKED] Contact form (${spamCheck.reason})`,
+            html: `
+              <h2>Blocked submission</h2>
+              <p><strong>Reason:</strong> ${spamCheck.reason}</p>
+              <p><strong>Locale:</strong> ${body.locale || ""}</p>
+              <p><strong>Name:</strong> ${body.name || ""}</p>
+              <p><strong>Email:</strong> ${body.email || ""}</p>
+              <p><strong>Phone:</strong> ${body.phone || ""}</p>
+              <p><strong>Company:</strong> ${body.company || ""}</p>
+              <p><strong>Country:</strong> ${body.country || ""}</p>
+              <p><strong>Topic:</strong> ${body.topic || ""}</p>
+              <p><strong>Model:</strong> ${body.model || ""}</p>
+              <p><strong>Message:</strong> ${body.message || ""}</p>
+            `,
+          });
+        }
       } catch (e) {
         console.error("[contact] failed to send spam-review notification:", e);
       }
@@ -118,6 +131,13 @@ export async function POST(request: Request) {
     const subject = getSubjectByLocale(locale, body.name);
     const languageDisplay = getLanguageDisplay(locale);
     const localeRegion = getLocaleRegion(locale);
+
+    if (!resend) {
+      return NextResponse.json(
+        { error: "Contact email service is not configured." },
+        { status: 503 },
+      );
+    }
 
     const { data, error } = await resend.emails.send({
       from: "Wayne Kerr <sales@waynekerr.com>", // Use your verified domain
