@@ -89,20 +89,38 @@ export default function StoreHeader() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between gap-4">
-            <nav className="flex flex-wrap items-center gap-x-8 gap-y-3 text-base font-medium text-gray-700">
-              <Link href={`/${locale}`} className="transition-colors hover:text-blue-700">
-                {t("navigation.home")}
-              </Link>
-              <Link href={`/${locale}/#inventory`} className="transition-colors hover:text-blue-700">
-                {t("usedEquipment.inventory.title")}
-              </Link>
-              <Link href={`/${locale}/#about`} className="transition-colors hover:text-blue-700">
-                {t("navigation.about")}
-              </Link>
-            </nav>
-            <div className="flex h-11 items-center gap-2 rounded-full border border-gray-300 px-3 sm:hidden">
-              <Globe2 size={16} className="text-gray-500" />
+          <nav className="hidden flex-wrap items-center gap-x-8 gap-y-3 text-base font-medium text-gray-700 sm:flex">
+            <Link href={`/${locale}`} className="transition-colors hover:text-blue-700">
+              {t("navigation.home")}
+            </Link>
+            <Link href={`/${locale}/#inventory`} className="transition-colors hover:text-blue-700">
+              {t("usedEquipment.inventory.title")}
+            </Link>
+            <Link href={`/${locale}/#about`} className="transition-colors hover:text-blue-700">
+              {t("navigation.about")}
+            </Link>
+          </nav>
+
+          <div className="grid grid-cols-4 items-stretch gap-2 text-center text-sm font-medium text-gray-700 sm:hidden">
+            <Link
+              href={`/${locale}`}
+              className="flex min-h-11 items-center justify-center rounded-2xl px-2 py-3 transition-colors hover:text-blue-700"
+            >
+              {t("navigation.home")}
+            </Link>
+            <Link
+              href={`/${locale}/#inventory`}
+              className="flex min-h-11 items-center justify-center rounded-2xl px-2 py-3 transition-colors hover:text-blue-700"
+            >
+              {t("usedEquipment.inventory.title")}
+            </Link>
+            <Link
+              href={`/${locale}/#about`}
+              className="flex min-h-11 items-center justify-center rounded-2xl px-2 py-3 transition-colors hover:text-blue-700"
+            >
+              {t("navigation.about")}
+            </Link>
+            <div className="min-w-0">
               <LocaleSwitcher />
             </div>
           </div>
