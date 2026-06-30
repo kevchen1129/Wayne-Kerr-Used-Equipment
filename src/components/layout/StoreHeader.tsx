@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Globe2, Search, User } from "lucide-react";
+import { Globe2, Search } from "lucide-react";
 import LocaleSwitcher from "./LocaleSwitcher";
 
 export default function StoreHeader() {
@@ -82,18 +82,11 @@ export default function StoreHeader() {
             </form>
 
             <div className="flex items-center gap-3 self-end lg:self-auto">
-              <button
-                type="button"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 text-gray-700 transition-colors hover:bg-gray-50"
-                aria-label="Account"
-              >
-                <User size={18} />
-              </button>
-              <div className="hidden sm:flex sm:items-center sm:gap-2 rounded-full border border-gray-300 px-3 py-2">
+              <div className="hidden h-11 items-center gap-2 rounded-full border border-gray-300 px-3 sm:flex">
                 <Globe2 size={16} className="text-gray-500" />
                 <LocaleSwitcher />
               </div>
-              <div className="sm:hidden">
+              <div className="h-11 sm:hidden">
                 <LocaleSwitcher />
               </div>
             </div>
