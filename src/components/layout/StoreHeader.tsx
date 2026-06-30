@@ -86,23 +86,26 @@ export default function StoreHeader() {
                 <Globe2 size={16} className="text-gray-500" />
                 <LocaleSwitcher />
               </div>
-              <div className="h-11 sm:hidden">
-                <LocaleSwitcher />
-              </div>
             </div>
           </div>
 
-          <nav className="flex flex-wrap items-center gap-x-8 gap-y-3 text-base font-medium text-gray-700">
-            <Link href={`/${locale}`} className="transition-colors hover:text-blue-700">
-              {t("navigation.home")}
-            </Link>
-            <Link href={`/${locale}/#inventory`} className="transition-colors hover:text-blue-700">
-              {t("usedEquipment.inventory.title")}
-            </Link>
-            <Link href={`/${locale}/#about`} className="transition-colors hover:text-blue-700">
-              {t("navigation.about")}
-            </Link>
-          </nav>
+          <div className="flex items-center justify-between gap-4">
+            <nav className="flex flex-wrap items-center gap-x-8 gap-y-3 text-base font-medium text-gray-700">
+              <Link href={`/${locale}`} className="transition-colors hover:text-blue-700">
+                {t("navigation.home")}
+              </Link>
+              <Link href={`/${locale}/#inventory`} className="transition-colors hover:text-blue-700">
+                {t("usedEquipment.inventory.title")}
+              </Link>
+              <Link href={`/${locale}/#about`} className="transition-colors hover:text-blue-700">
+                {t("navigation.about")}
+              </Link>
+            </nav>
+            <div className="flex h-11 items-center gap-2 rounded-full border border-gray-300 px-3 sm:hidden">
+              <Globe2 size={16} className="text-gray-500" />
+              <LocaleSwitcher />
+            </div>
+          </div>
         </div>
       </div>
     </header>
