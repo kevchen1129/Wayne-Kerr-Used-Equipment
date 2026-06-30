@@ -101,22 +101,22 @@ export default function StoreHeader() {
             </Link>
           </nav>
 
-          <div className="grid grid-cols-4 items-stretch gap-2 text-center text-sm font-medium text-gray-700 sm:hidden">
+          <div className="grid grid-cols-4 items-stretch gap-1 text-center text-[15px] font-medium text-gray-700 sm:hidden">
             <Link
               href={`/${locale}`}
-              className="flex min-h-11 items-center justify-center rounded-2xl px-2 py-3 transition-colors hover:text-blue-700"
+              className="flex min-h-10 items-center justify-center rounded-xl px-1 py-2.5 transition-colors hover:text-blue-700"
             >
               {t("navigation.home")}
             </Link>
             <Link
               href={`/${locale}/#inventory`}
-              className="flex min-h-11 items-center justify-center rounded-2xl px-2 py-3 transition-colors hover:text-blue-700"
+              className="flex min-h-10 items-center justify-center rounded-xl px-1 py-2.5 transition-colors hover:text-blue-700"
             >
               {t("usedEquipment.inventory.title")}
             </Link>
             <Link
               href={`/${locale}/#about`}
-              className="flex min-h-11 items-center justify-center rounded-2xl px-2 py-3 transition-colors hover:text-blue-700"
+              className="flex min-h-10 items-center justify-center rounded-xl px-1 py-2.5 transition-colors hover:text-blue-700"
             >
               {t("navigation.about")}
             </Link>

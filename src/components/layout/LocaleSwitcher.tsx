@@ -22,7 +22,7 @@ export default function LocaleSwitcher() {
       value={currentLocale}
       onChange={(e) => switchLanguage(e.target.value as Locale)}
       aria-label="Select language"
-      className="h-11 w-full min-w-0 rounded-full border border-gray-300 bg-transparent px-4 text-base font-medium text-gray-700 outline-none sm:h-auto sm:w-auto sm:border-0 sm:px-2 sm:text-sm"
+      className="h-10 w-full min-w-0 rounded-xl border border-gray-300 bg-transparent px-3 text-[15px] font-medium text-gray-700 outline-none sm:h-auto sm:w-auto sm:rounded-full sm:border-0 sm:px-2 sm:text-sm"
     >
       {locales.map((locale) => (
         <option key={locale} value={locale}>
