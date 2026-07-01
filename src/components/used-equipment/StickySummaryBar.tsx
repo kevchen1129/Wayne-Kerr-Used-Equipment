@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { formatDisplayPrice } from "@/utils/formatPrice";
 
 type StickySummaryBarProps = {
   image: string;
@@ -86,7 +87,7 @@ export default function StickySummaryBar({
                 <div>
                   <p className="text-sm text-gray-500 dark:text-gray-400">{fromLabel}</p>
                   <p className="text-2xl font-semibold text-gray-950 dark:text-white">
-                    {currency} {price}
+                    {currency} {formatDisplayPrice(price)}
                   </p>
                 </div>
                 <Link

@@ -13,6 +13,7 @@ import {
 import { locales } from "@/i18n/locales";
 import { getUsedEquipmentBySlug, usedEquipmentInventory } from "@/data/usedEquipment";
 import { BORDER_STYLES, TEXT_SECONDARY } from "@/src/styles/styles";
+import { formatDisplayPrice } from "@/utils/formatPrice";
 
 function buildUsedEquipmentContactHref(
   locale: string,
@@ -148,7 +149,7 @@ export default async function UsedEquipmentDetailPage({
                       {t("detail.displayPrice")}
                     </p>
                     <p className="mt-2 text-3xl font-semibold text-gray-950 dark:text-white sm:text-4xl">
-                      {item.currency} {item.price}
+                      {item.currency} {formatDisplayPrice(item.price)}
                     </p>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">

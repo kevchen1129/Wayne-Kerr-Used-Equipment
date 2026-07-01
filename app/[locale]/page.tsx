@@ -3,6 +3,7 @@ import { ArrowRight, MapPin } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { getUsedEquipmentInventory } from "@/data/usedEquipment";
 import { TEXT_SECONDARY } from "@/src/styles/styles";
+import { formatDisplayPrice } from "@/utils/formatPrice";
 
 function buildUsedEquipmentContactHref(
   locale: string,
@@ -242,7 +243,7 @@ export default async function UsedEquipmentPage({
                         {t("inventory.price")}
                       </p>
                       <p className="text-lg font-semibold text-gray-950">
-                        {item.currency} {item.price}
+                        {item.currency} {formatDisplayPrice(item.price)}
                       </p>
                     </div>
                   </div>
