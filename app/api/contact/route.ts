@@ -2,8 +2,6 @@ import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { isSpam } from "@/utils/spamDetection";
 
-const testEmail = "sales@waynekerr.com";
-
 function getResendClient() {
   const apiKey = process.env.RESEND_API_KEY;
 
@@ -14,21 +12,15 @@ function getResendClient() {
   return new Resend(apiKey);
 }
 
-function getEmailByLocale(locale: string): string {
-  const localeMap: Record<string, string> = {
-    en: "sales@waynekerr.com",
-    "en-GB": "sales-uk@waynekerr.com",
-    "zh-TW": "kevin.lin@waynekerrtest.com.tw",
-    "zh-CN": "yjh_waynekerr@163.com",
-    ja: "novi@wkjapan.co.jp",
-    de: "bmueller@waynekerr.de",
-    "en-DK": "lj.christensen@danbridge.com",
-    hi: "glhitech.india@gmail.com",
-    ko: "john_in@waynekerr.co.kr",
-    pl: "office@waynekerr.pl",
-  };
+function getNotificationEmail() {
+  return process.env.CONTACT_NOTIFICATION_EMAIL || "kevchen1129@gmail.com";
+}
 
-  return localeMap[locale] || testEmail;
+function getSenderEmail() {
+  return (
+    process.env.RESEND_FROM_EMAIL ||
+    "Wayne Kerr Refurbished Store <onboarding@resend.dev>"
+  );
 }
 
 function getSubjectByLocale(locale: string, name: string): string {
@@ -100,8 +92,8 @@ export async function POST(request: Request) {
       try {
         if (resend) {
           await resend.emails.send({
-            from: "Wayne Kerr <sales@waynekerr.com>",
-            to: ["kcbs96199@gmail.com"],
+            from: getSenderEmail(),
+            to: [getNotificationEmail()],
             subject: `[BLOCKED] Contact form (${spamCheck.reason})`,
             html: `
               <h2>Blocked submission</h2>
@@ -127,7 +119,6 @@ export async function POST(request: Request) {
 
     const locale = body.locale || "en";
 
-    const recipientEmail = getEmailByLocale(locale);
     const subject = getSubjectByLocale(locale, body.name);
     const languageDisplay = getLanguageDisplay(locale);
     const localeRegion = getLocaleRegion(locale);
@@ -140,8 +131,8 @@ export async function POST(request: Request) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: "Wayne Kerr <sales@waynekerr.com>", // Use your verified domain
-      to: [recipientEmail],
+      from: getSenderEmail(),
+      to: [getNotificationEmail()],
       subject: subject,
       html: `
         <h2>New Contact</h2>
