@@ -76,6 +76,63 @@ function getLocaleRegion(locale: string): string {
   return regionMap[locale] || "";
 }
 
+function getCustomerAutoReply(locale: string, name: string, model?: string) {
+  const safeName = name || "Customer";
+  const safeModel = model || "-";
+
+  const contentMap: Record<
+    string,
+    { subject: string; html: string }
+  > = {
+    en: {
+      subject: `We received your Wayne Kerr enquiry`,
+      html: `
+        <p>Dear ${safeName},</p>
+        <p>Thank you for contacting the Wayne Kerr Official Refurbished Store.</p>
+        <p>We have received your enquiry and will review your request shortly.</p>
+        <p><strong>Model:</strong> ${safeModel}</p>
+        <p>If needed, our team may follow up with pricing, availability, and technical details.</p>
+        <p>Best regards,<br />Wayne Kerr Official Refurbished Store</p>
+      `,
+    },
+    "zh-TW": {
+      subject: `已收到您的 Wayne Kerr 詢問`,
+      html: `
+        <p>${safeName} 您好，</p>
+        <p>感謝您聯絡 Wayne Kerr Official Refurbished Store。</p>
+        <p>我們已收到您的詢問，將盡快為您確認內容。</p>
+        <p><strong>型號：</strong>${safeModel}</p>
+        <p>如有需要，我們將再提供價格、庫存與技術相關資訊。</p>
+        <p>敬祝 順心<br />Wayne Kerr Official Refurbished Store</p>
+      `,
+    },
+    "zh-CN": {
+      subject: `我们已收到您的 Wayne Kerr 咨询`,
+      html: `
+        <p>${safeName} 您好，</p>
+        <p>感谢您联系 Wayne Kerr Official Refurbished Store。</p>
+        <p>我们已经收到您的咨询，并会尽快确认相关内容。</p>
+        <p><strong>型号：</strong>${safeModel}</p>
+        <p>如有需要，我们将进一步提供价格、库存与技术信息。</p>
+        <p>此致<br />Wayne Kerr Official Refurbished Store</p>
+      `,
+    },
+    ja: {
+      subject: `Wayne Kerr へのお問い合わせを受け付けました`,
+      html: `
+        <p>${safeName} 様</p>
+        <p>Wayne Kerr Official Refurbished Store へお問い合わせいただきありがとうございます。</p>
+        <p>お問い合わせ内容を受領しました。内容を確認のうえ、追ってご連絡いたします。</p>
+        <p><strong>型番:</strong> ${safeModel}</p>
+        <p>必要に応じて、価格・在庫・技術情報をご案内いたします。</p>
+        <p>よろしくお願いいたします。<br />Wayne Kerr Official Refurbished Store</p>
+      `,
+    },
+  };
+
+  return contentMap[locale] || contentMap.en;
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -167,6 +224,26 @@ export async function POST(request: Request) {
         },
         { status: 500 },
       );
+    }
+
+    const autoReply = getCustomerAutoReply(locale, body.name, body.model);
+    const customerEmail = typeof body.email === "string" ? body.email.trim() : "";
+
+    if (customerEmail) {
+      const { error: autoReplyError } = await resend.emails.send({
+        from: getSenderEmail(),
+        to: [customerEmail],
+        subject: autoReply.subject,
+        html: autoReply.html,
+      });
+
+      if (autoReplyError) {
+        console.error("[contact] customer auto-reply failed", {
+          error: autoReplyError,
+          to: customerEmail,
+          locale,
+        });
+      }
     }
 
     return NextResponse.json({ data });
