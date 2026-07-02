@@ -150,11 +150,37 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      return NextResponse.json({ error }, { status: 500 });
+      console.error("[contact] resend send failed", {
+        error,
+        from: getSenderEmail(),
+        to: getNotificationEmail(),
+        locale,
+        subject,
+      });
+
+      return NextResponse.json(
+        {
+          error:
+            typeof error === "object" && error && "message" in error
+              ? error.message
+              : "Failed to send contact email.",
+        },
+        { status: 500 },
+      );
     }
 
     return NextResponse.json({ data });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    console.error("[contact] unexpected error", error);
+
+    return NextResponse.json(
+      {
+        error:
+          error instanceof Error
+            ? error.message
+            : "Unexpected server error.",
+      },
+      { status: 500 },
+    );
   }
 }

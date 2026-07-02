@@ -98,7 +98,8 @@ function ContactFormPageContent() {
           setShowToast(false);
         }, 5000);
       } else {
-        setError(t("errors.submitFailed"));
+        const result = await response.json().catch(() => null);
+        setError(result?.error || t("errors.submitFailed"));
       }
     } catch (error) {
       console.error("Error:", error);
