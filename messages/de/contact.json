@@ -2,7 +2,7 @@
   "contact": {
     "hero": {
       "title": "Kontaktieren Sie uns",
-      "subtitle": "Wir antworten innerhalb eines Werktages"
+      "subtitle": "Wir antworten innerhalb von 48 Stunden"
     },
     "form": {
       "fields": {
@@ -67,7 +67,7 @@
     },
     "toast": {
       "title": "Anfrage erfolgreich gesendet!",
-      "message": "Wir haben Ihre Angebotsanfrage erhalten. Unser Team wird sich innerhalb von 24 Stunden bei Ihnen melden."
+      "message": "Wir haben Ihre Angebotsanfrage erhalten. Unser Team wird sich innerhalb von 48 Stunden bei Ihnen melden."
     },
     "errors": {
       "submitFailed": "Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",

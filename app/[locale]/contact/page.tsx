@@ -5,33 +5,14 @@ import { Send, X, CheckCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 
-// Hook to detect prefers-reduced-motion
-function useReducedMotion() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
-
-  return prefersReducedMotion;
-}
-
 function ContactFormPageContent() {
   const t = useTranslations("contact");
   const tUsedEquipment = useTranslations("usedEquipment");
+  const tNav = useTranslations("navigation");
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
   const locale = params.locale as string;
-  const prefersReducedMotion = useReducedMotion();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -59,7 +40,7 @@ function ContactFormPageContent() {
   }, [searchParams]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showToast, setShowToast] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -77,26 +58,8 @@ function ContactFormPageContent() {
 
       if (response.ok) {
         setError(null);
-        // Show toast notification
-        setShowToast(true);
-
-        // Reset form
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          company: "",
-          country: "",
-          topic: "",
-          model: "",
-          message: "",
-          hp_field: "",
-        });
-
-        // Auto-hide toast after 5 seconds
-        setTimeout(() => {
-          setShowToast(false);
-        }, 5000);
+        setIsSubmitted(true);
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         const result = await response.json().catch(() => null);
         setError(result?.error || t("errors.submitFailed"));
@@ -121,13 +84,50 @@ function ContactFormPageContent() {
     if (error) setError(null);
   };
 
-  const closeToast = () => {
-    setShowToast(false);
-  };
-
   const handleBack = () => {
     router.back();
   };
+
+  if (isSubmitted) {
+    return (
+      <main className="min-h-screen pt-32 pb-16">
+        <div className="mx-auto max-w-[900px] px-10 pt-10" id="main-content">
+          <div className="rounded-[28px] border border-gray-200 bg-white p-8 shadow-[0_30px_80px_rgba(15,23,42,0.08)] md:p-12">
+            <div className="mx-auto max-w-[640px] text-center">
+              <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+                <CheckCircle size={44} aria-hidden="true" />
+              </div>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-blue-600">
+                Wayne Kerr Official Refurbished Store
+              </p>
+              <h1 className="mb-4 text-4xl font-bold text-primary md:text-5xl">
+                {t("toast.title")}
+              </h1>
+              <p className="mx-auto mb-10 max-w-[560px] text-lg leading-8 text-secondary">
+                {t("toast.message")}
+              </p>
+              <div className="flex flex-col justify-center gap-4 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={() => router.push(`/${locale}#inventory`)}
+                  className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-7 py-3.5 text-base font-semibold text-white transition-colors hover:bg-blue-700"
+                >
+                  {tUsedEquipment("inventory.title")}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => router.push(`/${locale}`)}
+                  className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-7 py-3.5 text-base font-semibold text-primary transition-colors hover:bg-gray-50"
+                >
+                  {tNav("home")}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <>
@@ -441,68 +441,6 @@ function ContactFormPageContent() {
           </div>
         </div>
       </main>
-
-      {/* Toast Notification */}
-      {showToast && (
-        <div
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-          className={`fixed top-6 right-6 z-50 ${prefersReducedMotion ? "" : "animate-slideIn"}`}
-        >
-          <div className="bg-blue-600 border-l-4 border-blue-400 rounded-xl shadow-xl p-5 pr-12 min-w-[350px] max-w-md">
-            <button
-              onClick={closeToast}
-              type="button"
-              aria-label="Close notification"
-              className="absolute top-4 right-4 text-white hover:text-blue-100 transition-colors rounded"
-            >
-              <X size={20} aria-hidden="true" />
-            </button>
-
-            <div className="flex items-start gap-3">
-              <div className="flex-shrink-0">
-                <CheckCircle
-                  className="text-white"
-                  size={24}
-                  aria-hidden="true"
-                />
-              </div>
-              <div>
-                <h3 className="font-bold text-white mb-1">
-                  {t("toast.title")}
-                </h3>
-                <p className="text-sm text-white/90 leading-relaxed">
-                  {t("toast.message")}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <style jsx>{`
-        @keyframes slideIn {
-          from {
-            transform: translateX(400px);
-            opacity: 0;
-          }
-          to {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-
-        .animate-slideIn {
-          animation: slideIn 0.3s ease-out;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .animate-slideIn {
-            animation: none;
-          }
-        }
-      `}</style>
     </>
   );
 }

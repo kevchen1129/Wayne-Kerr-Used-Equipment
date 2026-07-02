@@ -2,7 +2,7 @@
   "contact": {
     "hero": {
       "title": "Skontaktuj się z nami",
-      "subtitle": "Odpowiemy w ciągu jednego dnia roboczego"
+      "subtitle": "Odpowiemy w ciągu 48 godzin"
     },
     "form": {
       "fields": {
@@ -66,7 +66,7 @@
     },
     "toast": {
       "title": "Zapytanie zostało wysłane!",
-      "message": "Otrzymaliśmy Twoje zapytanie ofertowe. Nasz zespół skontaktuje się z Tobą w ciągu 24 godzin."
+      "message": "Otrzymaliśmy Twoje zapytanie ofertowe. Nasz zespół skontaktuje się z Tobą w ciągu 48 godzin."
     },
     "errors": {
       "submitFailed": "Nie udało się wysłać zapytania. Spróbuj ponownie.",

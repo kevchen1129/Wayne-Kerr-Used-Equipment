@@ -2,7 +2,7 @@
   "contact": {
     "hero": {
       "title": "Contact Us",
-      "subtitle": "We'll respond within one business day"
+      "subtitle": "We'll respond within 48 hours"
     },
     "form": {
       "fields": {
@@ -67,7 +67,7 @@
     },
     "toast": {
       "title": "Request Sent Successfully!",
-      "message": "We've received your quote request. Our team will get back to you within 24 hours."
+      "message": "We've received your quote request. Our team will get back to you within 48 hours."
     },
     "errors": {
       "submitFailed": "Failed to send request. Please try again.",
