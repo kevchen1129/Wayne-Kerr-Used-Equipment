@@ -49,7 +49,6 @@ export function isSpam(payload: ContactPayload): SpamCheckResult {
   for (const [field, value] of [
     ["name", name],
     ["company", company],
-    ["message", message],
   ] as const) {
     if (vowelRatioSpam(value)) {
       return { spam: true, reason: `vowel-ratio:${field}` };
@@ -57,6 +56,11 @@ export function isSpam(payload: ContactPayload): SpamCheckResult {
     if (caseFlipSpam(value)) {
       return { spam: true, reason: `case-flip:${field}` };
     }
+  }
+
+  // Keep message checks conservative so genuine quote requests are not blocked.
+  if (caseFlipSpam(message)) {
+    return { spam: true, reason: "case-flip:message" };
   }
 
   const atIdx = email.indexOf("@");
