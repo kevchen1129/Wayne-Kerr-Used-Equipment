@@ -14,6 +14,8 @@ export type UsedEquipmentItem = {
   currency: string;
   location: string;
   image: string;
+  gallery?: string[];
+  serialNumber?: string;
   datasheet?: string;
   condition: string;
   warranty: string;
@@ -53,11 +55,25 @@ const standardAvailability = "Available on request";
 const standardStockNote =
   "Display price is a placeholder until final commercial pricing is confirmed.";
 
+const sampleGalleryPool = [
+  "/images/products/instruments/6500B_system.webp",
+  "/images/products/instruments/6565.webp",
+  "/images/products/instruments/3260B_system.webp",
+  "/images/products/instruments/4300.webp",
+  "/images/products/instruments/6440B.webp",
+  "/images/products/instruments/6500P.webp",
+];
+
+function buildFallbackGallery(primaryImage: string): string[] {
+  return Array.from(new Set([primaryImage, ...sampleGalleryPool])).slice(0, 4);
+}
+
 const baseInventory: UsedEquipmentItem[] = [
   {
     slug: "65120b-bd1-1",
     model: "65120B",
     stockReference: "104WK65120BD1",
+    serialNumber: "1597927",
     family: "6500B Series",
     seriesTag: "65120 Series",
     groupTags: ["6500 Series", "Impedance Analyzer"],
@@ -67,79 +83,13 @@ const baseInventory: UsedEquipmentItem[] = [
     price: "38000",
     currency: "USD",
     location: "US / Japan",
-    image: "/images/products/instruments/6500B.webp",
-    datasheet: "/datasheets/instruments/WK6500B.pdf",
-    condition: standardCondition,
-    warranty: standardWarranty,
-    availability: standardAvailability,
-    shortDescription:
-      "High-frequency impedance analyzer with graphing, frequency sweep, and bias sweep capability, expandable to 80A DC bias testing with 6565 units.",
-    overview:
-      "This 65120B listing represents a separate Wayne Kerr impedance analyzer prepared for customer-facing delivery with recalibration, refurbishment, and OEM follow-up support. It supports sweep frequency and sweep bias analysis with graphical display capability, and when paired with 6565 bias units it can support DC bias testing up to 80A total.",
-    highlights: [
-      "Up to 120 MHz impedance analysis",
-      "Graphical display for sweep frequency and sweep bias studies",
-      "Supports DC bias testing up to 80A total with 6565 units",
-      "Strong fit for advanced component characterization and materials evaluation",
+    image: "/images/uploads/65120B-1597927/1.jpg",
+    gallery: [
+      "/images/uploads/65120B-1597927/1.jpg",
+      "/images/uploads/65120B-1597927/2.jpg",
+      "/images/uploads/65120B-1597927/3.jpg",
+      "/images/uploads/65120B-1597927/4.jpg",
     ],
-    includes: [
-      "Functional verification before release",
-      "Wayne Kerr platform review and condition screening",
-      "Basic used-equipment preparation and availability support",
-    ],
-    compatibleWith: ["6565-120 HF DC Bias Unit"],
-    stockNote: standardStockNote,
-  },
-  {
-    slug: "65120b-bd2",
-    model: "65120B",
-    stockReference: "104WK65120BD2",
-    family: "6500B Series",
-    seriesTag: "65120 Series",
-    groupTags: ["6500 Series", "Impedance Analyzer"],
-    title: "Precision Impedance Analyzer",
-    category: "Impedance Analyzers",
-    frequencyRange: "20 Hz to 120 MHz",
-    price: "38000",
-    currency: "USD",
-    location: "US / Japan",
-    image: "/images/products/instruments/6500B.webp",
-    datasheet: "/datasheets/instruments/WK6500B.pdf",
-    condition: standardCondition,
-    warranty: standardWarranty,
-    availability: standardAvailability,
-    shortDescription:
-      "High-frequency impedance analyzer with graphing, frequency sweep, and bias sweep capability, expandable to 80A DC bias testing with 6565 units.",
-    overview:
-      "This 65120B listing represents a separate Wayne Kerr impedance analyzer prepared for customer-facing delivery with recalibration, refurbishment, and OEM follow-up support. It supports sweep frequency and sweep bias analysis with graphical display capability, and when paired with 6565 bias units it can support DC bias testing up to 80A total.",
-    highlights: [
-      "Up to 120 MHz impedance analysis",
-      "Graphical display for sweep frequency and sweep bias studies",
-      "Supports DC bias testing up to 80A total with 6565 units",
-      "Strong fit for advanced component characterization and materials evaluation",
-    ],
-    includes: [
-      "Functional verification before release",
-      "Wayne Kerr platform review and condition screening",
-      "Basic used-equipment preparation and availability support",
-    ],
-    compatibleWith: ["6565-120 HF DC Bias Unit"],
-    stockNote: standardStockNote,
-  },
-  {
-    slug: "65120b-ke",
-    model: "65120B",
-    stockReference: "104KE65120BD1",
-    family: "6500B Series",
-    seriesTag: "65120 Series",
-    groupTags: ["6500 Series", "Impedance Analyzer"],
-    title: "Precision Impedance Analyzer",
-    category: "Impedance Analyzers",
-    frequencyRange: "20 Hz to 120 MHz",
-    price: "38000",
-    currency: "USD",
-    location: "US / Japan",
-    image: "/images/products/instruments/6500B.webp",
     datasheet: "/datasheets/instruments/WK6500B.pdf",
     condition: standardCondition,
     warranty: standardWarranty,
@@ -166,6 +116,7 @@ const baseInventory: UsedEquipmentItem[] = [
     slug: "6565-120-1",
     model: "6565-120",
     stockReference: "1046565120AAN0",
+    serialNumber: "1587114",
     family: "6565 Series",
     seriesTag: "6565 Series",
     groupTags: ["6500 Series", "DC Bias Unit"],
@@ -175,7 +126,13 @@ const baseInventory: UsedEquipmentItem[] = [
     price: "17500",
     currency: "USD",
     location: "Taiwan",
-    image: "/images/products/instruments/6565.webp",
+    image: "/images/uploads/6565-120-1587114/1.jpg",
+    gallery: [
+      "/images/uploads/6565-120-1587114/1.jpg",
+      "/images/uploads/6565-120-1587114/2.jpg",
+      "/images/uploads/6565-120-1587114/3.jpg",
+      "/images/uploads/6565-120-1587114/4.jpg",
+    ],
     datasheet: "/datasheets/instruments/WK6565.pdf",
     condition: standardCondition,
     warranty: standardWarranty,
@@ -202,6 +159,7 @@ const baseInventory: UsedEquipmentItem[] = [
     slug: "6565-120-2",
     model: "6565-120",
     stockReference: "104KE6565120N0",
+    serialNumber: "1587113",
     family: "6565 Series",
     seriesTag: "6565 Series",
     groupTags: ["6500 Series", "DC Bias Unit"],
@@ -211,7 +169,56 @@ const baseInventory: UsedEquipmentItem[] = [
     price: "17500",
     currency: "USD",
     location: "Taiwan",
-    image: "/images/products/instruments/6565.webp",
+    image: "/images/uploads/6565-120-1587113/1.jpg",
+    gallery: [
+      "/images/uploads/6565-120-1587113/1.jpg",
+      "/images/uploads/6565-120-1587113/2.jpg",
+      "/images/uploads/6565-120-1587113/3.jpg",
+      "/images/uploads/6565-120-1587113/4.jpg",
+    ],
+    datasheet: "/datasheets/instruments/WK6565.pdf",
+    condition: standardCondition,
+    warranty: standardWarranty,
+    availability: standardAvailability,
+    shortDescription:
+      "Each 6565 unit can deliver up to 10A, and you can reach up to 80A when paired with a Wayne Kerr 6500 Impedance Analyzer.",
+    overview:
+      "This 6565-120 listing is a dedicated Wayne Kerr HF DC Bias Unit prepared for bias-dependent component characterization with the Wayne Kerr 6500 Impedance Analyzer. Each 6565 unit can provide up to 10A, and users can reach up to 80A total by connecting up to eight units in parallel.",
+    highlights: [
+      "Designed to pair with the Wayne Kerr 6500 Impedance Analyzer",
+      "Supports high-frequency work up to 120 MHz",
+      "Each 6565 unit can provide up to 10A of DC current",
+      "Use up to eight units in parallel to reach a maximum of 80A",
+    ],
+    includes: [
+      "Compatibility review with your 6500 platform",
+      "Used-equipment functional verification",
+      "Guidance on fixture and current-range planning",
+    ],
+    compatibleWith: ["65120B", "65120P", "Other Wayne Kerr 6500-Series models"],
+    stockNote: standardStockNote,
+  },
+  {
+    slug: "6565-120-3",
+    model: "6565-120",
+    stockReference: "SN-1587139",
+    serialNumber: "1587139",
+    family: "6565 Series",
+    seriesTag: "6565 Series",
+    groupTags: ["6500 Series", "DC Bias Unit"],
+    title: "HF DC Bias Unit",
+    category: "DC Bias Accessories",
+    frequencyRange: "20 Hz to 120 MHz",
+    price: "17500",
+    currency: "USD",
+    location: "Taiwan",
+    image: "/images/uploads/6565-120-1587139/1.jpg",
+    gallery: [
+      "/images/uploads/6565-120-1587139/1.jpg",
+      "/images/uploads/6565-120-1587139/2.jpg",
+      "/images/uploads/6565-120-1587139/3.jpg",
+      "/images/uploads/6565-120-1587139/4.jpg",
+    ],
     datasheet: "/datasheets/instruments/WK6565.pdf",
     condition: standardCondition,
     warranty: standardWarranty,
@@ -238,6 +245,7 @@ const baseInventory: UsedEquipmentItem[] = [
     slug: "3260b-ke",
     model: "3260B",
     stockReference: "104KE3260BAN0",
+    serialNumber: "9002872",
     family: "3260B Series",
     seriesTag: "3260 Series",
     groupTags: ["3260 Series", "Magnetics Analyzer"],
@@ -247,7 +255,13 @@ const baseInventory: UsedEquipmentItem[] = [
     price: "15500",
     currency: "USD",
     location: "Global Stock",
-    image: "/images/products/instruments/3260B.webp",
+    image: "/images/uploads/3260B-9002872/1.jpg",
+    gallery: [
+      "/images/uploads/3260B-9002872/1.jpg",
+      "/images/uploads/3260B-9002872/2.jpg",
+      "/images/uploads/3260B-9002872/3.jpg",
+      "/images/uploads/3260B-9002872/4.jpg",
+    ],
     datasheet: "/datasheets/instruments/WK3260B.pdf",
     condition: standardCondition,
     warranty: standardWarranty,
@@ -379,6 +393,7 @@ const baseInventory: UsedEquipmentItem[] = [
     slug: "65120b-bd1-2",
     model: "65120B",
     stockReference: "104WK65120BD1",
+    serialNumber: "1597992",
     family: "6500B Series",
     seriesTag: "65120 Series",
     groupTags: ["6500 Series", "Impedance Analyzer"],
@@ -388,7 +403,13 @@ const baseInventory: UsedEquipmentItem[] = [
     price: "38000",
     currency: "USD",
     location: "US / Japan",
-    image: "/images/products/instruments/6500B.webp",
+    image: "/images/uploads/65120B-1597992/4.jpg",
+    gallery: [
+      "/images/uploads/65120B-1597992/4.jpg",
+      "/images/uploads/65120B-1597992/1.jpg",
+      "/images/uploads/65120B-1597992/2.jpg",
+      "/images/uploads/65120B-1597992/3.jpg",
+    ],
     datasheet: "/datasheets/instruments/WK6500B.pdf",
     condition: standardCondition,
     warranty: standardWarranty,
@@ -412,9 +433,10 @@ const baseInventory: UsedEquipmentItem[] = [
     stockNote: standardStockNote,
   },
   {
-    slug: "65120b-bd1-3",
+    slug: "65120b-bd2-1",
     model: "65120B",
-    stockReference: "104WK65120BD1",
+    stockReference: "104WK65120BD2",
+    serialNumber: "0997251",
     family: "6500B Series",
     seriesTag: "65120 Series",
     groupTags: ["6500 Series", "Impedance Analyzer"],
@@ -424,7 +446,13 @@ const baseInventory: UsedEquipmentItem[] = [
     price: "38000",
     currency: "USD",
     location: "US / Japan",
-    image: "/images/products/instruments/6500B.webp",
+    image: "/images/uploads/65120BD2-0997251/1.jpg",
+    gallery: [
+      "/images/uploads/65120BD2-0997251/1.jpg",
+      "/images/uploads/65120BD2-0997251/2.jpg",
+      "/images/uploads/65120BD2-0997251/3.jpg",
+      "/images/uploads/65120BD2-0997251/4.jpg",
+    ],
     datasheet: "/datasheets/instruments/WK6500B.pdf",
     condition: standardCondition,
     warranty: standardWarranty,
@@ -448,45 +476,96 @@ const baseInventory: UsedEquipmentItem[] = [
     stockNote: standardStockNote,
   },
   {
-    slug: "65120p",
-    model: "65120P",
-    stockReference: "1041J65120PN0",
-    family: "6500P Series",
-    seriesTag: "65120 Series",
+    slug: "6510p",
+    model: "6510P",
+    stockReference: "SN-22926621",
+    serialNumber: "22926621",
+    family: "6510P Series",
+    seriesTag: "6510 Series",
     groupTags: ["6500 Series", "HF LCR Meter"],
-    title: "Precision LCR Meter",
+    title: "HF LCR Meter",
     category: "LCR Meters",
-    frequencyRange: "20 Hz to 120 MHz",
-    price: "29500",
+    frequencyRange: "20 Hz to 10 MHz",
+    price: "99999",
     currency: "USD",
-    location: "Taiwan",
-    image: "/images/products/instruments/6500P.webp",
+    location: "China / C&G",
+    image: "/images/uploads/6510P-22926621/1.jpg",
+    gallery: [
+      "/images/uploads/6510P-22926621/1.jpg",
+      "/images/uploads/6510P-22926621/2.jpg",
+      "/images/uploads/6510P-22926621/3.jpg",
+      "/images/uploads/6510P-22926621/4.jpg",
+    ],
     datasheet: "/datasheets/instruments/WK6500P.pdf",
     condition: standardCondition,
     warranty: standardWarranty,
     availability: standardAvailability,
     shortDescription:
-      "High-frequency used LCR platform for teams that need broad range coverage with familiar Wayne Kerr workflows.",
+      "10 MHz HF LCR meter in the 6500P family for teams that need more range than 6505P without stepping up to 65120P.",
     overview:
-      "The 65120P extends the Wayne Kerr 6500P family to 120 MHz, giving users a flexible path for precision LCR work in production, validation, and component development environments.",
+      "The 6510P is the 10 MHz model in the Wayne Kerr 6500P HF LCR Meter family. It is a practical mid-range choice for customers who want broader high-frequency coverage while keeping the familiar 6500P workflow and platform architecture.",
     highlights: [
-      "120 MHz high-frequency LCR capability",
-      "±0.05% basic accuracy for core measurements",
-      "Large color touch display with programmable test workflows",
-      "LAN, GPIB, and USB connectivity for bench and system integration",
+      "20 Hz to 10 MHz HF LCR capability",
+      "Mid-range option within the Wayne Kerr 6500P platform",
+      "Suitable for routine evaluation, validation, and production support",
+      "Balanced step between 6505P and 65120P configurations",
     ],
     includes: [
-      "Used-equipment screening and functional checks",
-      "Configuration review for fixtures and application fit",
-      "Datasheet and availability follow-up via the Wayne Kerr team",
+      "Used-equipment functional verification",
+      "Configuration review for your measurement application",
+      "Availability and datasheet follow-up through the Wayne Kerr team",
     ],
-    compatibleWith: ["6565-120 HF DC Bias Unit"],
+    compatibleWith: ["6565 Series HF DC Bias Units"],
+    stockNote: standardStockNote,
+  },
+  {
+    slug: "6510p-2",
+    model: "6510P",
+    stockReference: "SN-22926615",
+    serialNumber: "22926615",
+    family: "6510P Series",
+    seriesTag: "6510 Series",
+    groupTags: ["6500 Series", "HF LCR Meter"],
+    title: "HF LCR Meter",
+    category: "LCR Meters",
+    frequencyRange: "20 Hz to 10 MHz",
+    price: "99999",
+    currency: "USD",
+    location: "China / C&G",
+    image: "/images/uploads/6510P-22926615/4.jpg",
+    gallery: [
+      "/images/uploads/6510P-22926615/4.jpg",
+      "/images/uploads/6510P-22926615/1.jpg",
+      "/images/uploads/6510P-22926615/2.jpg",
+      "/images/uploads/6510P-22926615/3.jpg",
+    ],
+    datasheet: "/datasheets/instruments/WK6500P.pdf",
+    condition: standardCondition,
+    warranty: standardWarranty,
+    availability: standardAvailability,
+    shortDescription:
+      "10 MHz HF LCR meter in the 6500P family for teams that need more range than 6505P without stepping up to 65120P.",
+    overview:
+      "The 6510P is the 10 MHz model in the Wayne Kerr 6500P HF LCR Meter family. It is a practical mid-range choice for customers who want broader high-frequency coverage while keeping the familiar 6500P workflow and platform architecture.",
+    highlights: [
+      "20 Hz to 10 MHz HF LCR capability",
+      "Mid-range option within the Wayne Kerr 6500P platform",
+      "Suitable for routine evaluation, validation, and production support",
+      "Balanced step between 6505P and 65120P configurations",
+    ],
+    includes: [
+      "Used-equipment functional verification",
+      "Configuration review for your measurement application",
+      "Availability and datasheet follow-up through the Wayne Kerr team",
+    ],
+    compatibleWith: ["6565 Series HF DC Bias Units"],
     stockNote: standardStockNote,
   },
   {
     slug: "3260b-standard",
     model: "3260B",
     stockReference: "104WK3260BGN0",
+    serialNumber: "0960442",
     family: "3260B Series",
     seriesTag: "3260 Series",
     groupTags: ["3260 Series", "Magnetics Analyzer"],
@@ -496,7 +575,13 @@ const baseInventory: UsedEquipmentItem[] = [
     price: "15500",
     currency: "USD",
     location: "Global Stock",
-    image: "/images/products/instruments/3260B.webp",
+    image: "/images/uploads/3260B-0960442/1.jpg",
+    gallery: [
+      "/images/uploads/3260B-0960442/1.jpg",
+      "/images/uploads/3260B-0960442/2.jpg",
+      "/images/uploads/3260B-0960442/3.jpg",
+      "/images/uploads/3260B-0960442/4.jpg",
+    ],
     datasheet: "/datasheets/instruments/WK3260B.pdf",
     condition: standardCondition,
     warranty: standardWarranty,
@@ -523,6 +608,7 @@ const baseInventory: UsedEquipmentItem[] = [
     slug: "6505p",
     model: "6505P",
     stockReference: "1041J6505PAN0",
+    serialNumber: "16911043",
     family: "6500P Series",
     seriesTag: "6505 Series",
     groupTags: ["6500 Series", "HF LCR Meter"],
@@ -532,7 +618,13 @@ const baseInventory: UsedEquipmentItem[] = [
     price: "99999",
     currency: "USD",
     location: "China / C&G",
-    image: "/images/products/instruments/6500P.webp",
+    image: "/images/uploads/6505P-16911043/1.jpg",
+    gallery: [
+      "/images/uploads/6505P-16911043/1.jpg",
+      "/images/uploads/6505P-16911043/2.jpg",
+      "/images/uploads/6505P-16911043/3.jpg",
+      "/images/uploads/6505P-16911043/4.jpg",
+    ],
     datasheet: "/datasheets/instruments/WK6500P.pdf",
     condition: standardCondition,
     warranty: standardWarranty,
@@ -751,6 +843,34 @@ const zhTWContentByModel: Record<string, LocaleContent> = {
     compatibleWith: ["6565-120 高頻直流偏壓單元"],
     stockNote: "目前顯示價格為暫定，最終商業報價確認後會再更新。",
   },
+  "6510P": {
+    family: "6510P 系列",
+    seriesTag: "6510 系列",
+    groupTags: ["6500 系列", "高頻 LCR 測試儀"],
+    title: "高頻 LCR 測試儀",
+    category: "LCR 測試儀",
+    location: "中國 / C&G",
+    condition: "原廠重新校準並翻新整理，外觀近似新品展示狀態",
+    warranty: "Wayne Kerr 原廠 1 年保固",
+    availability: "可來信確認供貨狀況",
+    shortDescription:
+      "6500P 家族中的 10 MHz 高頻 LCR 測試儀，適合需要比 6505P 更高頻寬、但不一定需要 65120P 的客戶。",
+    overview:
+      "6510P 是 Wayne Kerr 6500P 高頻 LCR 系列中的 10 MHz 機型，提供介於 6505P 與 65120P 之間的實用中階選擇，適合希望保有 6500P 平台操作流程與量測風格的使用者。",
+    highlights: [
+      "20 Hz 至 10 MHz 高頻 LCR 量測能力",
+      "屬於 Wayne Kerr 6500P 平台家族的中階機型",
+      "適合日常評估、驗證與生產支援",
+      "作為 6505P 與 65120P 之間的平衡配置",
+    ],
+    includes: [
+      "翻新設備功能驗證",
+      "量測應用配置檢查",
+      "由 Wayne Kerr 團隊提供供貨與型錄支援",
+    ],
+    compatibleWith: ["6565 系列高頻直流偏壓單元"],
+    stockNote: "目前顯示價格為暫定，最終商業報價確認後會再更新。",
+  },
   "6505P": {
     family: "6500P 系列",
     seriesTag: "6505 系列",
@@ -864,7 +984,15 @@ function getLocalizedModelContent(model: string, locale: string) {
   return undefined;
 }
 
+function ensureItemGallery(item: UsedEquipmentItem): UsedEquipmentItem {
+  return {
+    ...item,
+    gallery: item.gallery?.length ? item.gallery.slice(0, 4) : buildFallbackGallery(item.image),
+  };
+}
+
 function localizeItem(item: UsedEquipmentItem, locale: string): UsedEquipmentItem {
+
   const localized = getLocalizedModelContent(item.model, locale);
 
   if (!localized) {
@@ -880,10 +1008,10 @@ function localizeItem(item: UsedEquipmentItem, locale: string): UsedEquipmentIte
 
 export function getUsedEquipmentInventory(locale?: string): UsedEquipmentItem[] {
   if (!locale) {
-    return baseInventory;
+    return baseInventory.map((item) => ensureItemGallery(item));
   }
 
-  return baseInventory.map((item) => localizeItem(item, locale));
+  return baseInventory.map((item) => localizeItem(ensureItemGallery(item), locale));
 }
 
 export function getUsedEquipmentBySlug(locale?: string): Record<string, UsedEquipmentItem> {
@@ -892,5 +1020,5 @@ export function getUsedEquipmentBySlug(locale?: string): Record<string, UsedEqui
   ) as Record<string, UsedEquipmentItem>;
 }
 
-export const usedEquipmentInventory = baseInventory;
+export const usedEquipmentInventory = baseInventory.map((item) => ensureItemGallery(item));
 export const usedEquipmentBySlug = getUsedEquipmentBySlug();

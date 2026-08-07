@@ -74,6 +74,7 @@
       "warranty": "保修",
       "availability": "供货状态",
       "stockRef": "库存编号",
+      "serialNumber": "序列号",
       "requestAvailability": "询问库存",
       "openDatasheet": "打开型录",
       "keyHighlights": "重点特色",

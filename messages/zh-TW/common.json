@@ -74,6 +74,7 @@
       "warranty": "保固",
       "availability": "供貨狀態",
       "stockRef": "庫存編號",
+      "serialNumber": "序號",
       "requestAvailability": "詢問庫存",
       "openDatasheet": "開啟型錄",
       "keyHighlights": "重點特色",

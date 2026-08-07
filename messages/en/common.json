@@ -49,7 +49,7 @@
         "Backed by a 1-year warranty with Wayne Kerr follow-up support"
       ],
       "certifiedPromise": "Certified Promise",
-      "certifiedTitle": "Recalibrated, refurbished, and protected by a bold 1-year warranty.",
+      "certifiedTitle": "Recalibrated, refurbished, and backed by a 1-year warranty.",
       "certifiedDescription": "Every listed unit is presented as a Wayne Kerr premium used system, prepared for customer-facing delivery with OEM follow-up support."
     },
     "inventory": {
@@ -74,6 +74,7 @@
       "warranty": "Warranty",
       "availability": "Availability",
       "stockRef": "Stock Ref",
+      "serialNumber": "Serial Number",
       "requestAvailability": "Request availability",
       "openDatasheet": "Open datasheet",
       "keyHighlights": "Key Highlights",

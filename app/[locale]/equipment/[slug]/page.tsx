@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { locales } from "@/i18n/locales";
 import { getUsedEquipmentBySlug, usedEquipmentInventory } from "@/data/usedEquipment";
+import EquipmentImageGallery from "@/src/components/used-equipment/EquipmentImageGallery";
 import { BORDER_STYLES, TEXT_SECONDARY } from "@/src/styles/styles";
 import { formatDisplayPrice } from "@/utils/formatPrice";
 
@@ -55,6 +56,8 @@ export default async function UsedEquipmentDetailPage({
     request: t("contactPrefill.request"),
   };
 
+  const galleryImages = item.gallery?.length ? item.gallery : [item.image];
+
   return (
     <main className="min-h-screen bg-[linear-gradient(180deg,_rgba(248,250,252,1)_0%,_rgba(255,255,255,1)_100%)] pt-32 pb-20 dark:bg-[linear-gradient(180deg,_rgba(2,6,23,1)_0%,_rgba(3,7,18,1)_100%)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -70,56 +73,12 @@ export default async function UsedEquipmentDetailPage({
           className={`mt-8 overflow-hidden rounded-[2rem] border ${BORDER_STYLES} bg-white px-5 py-5 shadow-sm dark:bg-white/5 sm:px-7 sm:py-7`}
         >
           <div className="grid gap-8 lg:grid-cols-[96px_minmax(0,0.95fr)_minmax(0,1.05fr)]">
-            <div className="order-2 flex gap-3 lg:order-1 lg:flex-col">
-              <button
-                type="button"
-                className="overflow-hidden rounded-2xl border-2 border-blue-600 bg-white p-2 shadow-sm transition-transform hover:scale-[1.01] dark:bg-white/10"
-              >
-                <img
-                  src={item.image}
-                  alt={`${item.model} thumbnail`}
-                  className="h-20 w-20 object-contain"
-                />
-              </button>
-              <div className="flex h-24 w-24 items-center justify-center rounded-2xl border border-gray-200 bg-slate-50 p-2 dark:border-white/10 dark:bg-white/5">
-                <img
-                  src="/images/badges/used-premium-sticker.png"
-                  alt="Wayne Kerr Premium Used badge"
-                  className="h-16 w-16 object-contain"
-                />
-              </div>
-              <div className="hidden rounded-2xl border border-gray-200 bg-slate-50 px-3 py-4 text-center dark:border-white/10 dark:bg-white/5 lg:block">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700 dark:text-blue-300">
-                  1 Year
-                </p>
-                <p className="mt-1 text-xs text-gray-600 dark:text-gray-300">
-                  {t("detail.miniWarranty")}
-                </p>
-              </div>
-            </div>
-
-            <div className="order-1 lg:order-2">
-              <div className="rounded-[1.75rem] bg-[linear-gradient(180deg,rgba(232,241,252,1)_0%,rgba(216,231,248,1)_100%)] p-6 dark:bg-[linear-gradient(180deg,rgba(30,41,59,0.92)_0%,rgba(15,23,42,1)_100%)]">
-                <div className="relative overflow-hidden rounded-[1.5rem] bg-[linear-gradient(180deg,rgba(226,238,252,1)_0%,rgba(212,228,247,1)_100%)] p-6 dark:bg-[linear-gradient(180deg,rgba(51,65,85,0.55)_0%,rgba(30,41,59,0.65)_100%)]">
-                  <div className="absolute left-5 top-5 rounded-full bg-white/95 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-blue-700 shadow-lg ring-1 ring-black/5">
-                    {t("detail.warrantyBadge")}
-                  </div>
-                  <img
-                    src={item.image}
-                    alt={item.model}
-                    className="mx-auto block aspect-[4/3] w-full object-contain"
-                  />
-                  <img
-                    src="/images/badges/used-premium-sticker.png"
-                    alt="Wayne Kerr Premium Used badge"
-                    className="absolute bottom-5 right-5 h-16 w-16 rounded-full bg-white/92 p-1 shadow-xl ring-1 ring-black/5 sm:h-20 sm:w-20"
-                  />
-                </div>
-                <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
-                  {t("detail.imageCaption")}
-                </p>
-              </div>
-            </div>
+            <EquipmentImageGallery
+              images={galleryImages}
+              model={item.model}
+              warrantyBadge={t("detail.warrantyBadge")}
+              caption={t("detail.imageCaption")}
+            />
 
             <div className="order-3 lg:flex lg:flex-col">
               <div className="flex items-start justify-between gap-4">
@@ -135,7 +94,7 @@ export default async function UsedEquipmentDetailPage({
                   </p>
                 </div>
                 <p className="hidden pt-1 text-sm text-gray-400 lg:block">
-                  Ref: {item.stockReference}
+                  Ref: {item.serialNumber ?? item.stockReference}
                 </p>
               </div>
 
@@ -180,10 +139,10 @@ export default async function UsedEquipmentDetailPage({
                     </div>
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500 dark:text-gray-400">
-                        {t("detail.stockRef")}
+                        {item.serialNumber ? t("detail.serialNumber") : t("detail.stockRef")}
                       </p>
                       <p className={`mt-2 break-all leading-7 ${TEXT_SECONDARY}`}>
-                        {item.stockReference}
+                        {item.serialNumber ?? item.stockReference}
                       </p>
                     </div>
                   </div>
