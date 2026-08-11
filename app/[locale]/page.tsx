@@ -44,6 +44,7 @@ export default async function UsedEquipmentPage({
         const searchableFields = [
           item.model,
           item.stockReference,
+          item.serialNumber ?? "",
           item.family,
           item.seriesTag,
           item.title,
@@ -180,98 +181,105 @@ export default async function UsedEquipmentPage({
         ) : (
           <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
             {filteredInventory.map((item) => (
-              <article
-                key={item.slug}
-                className="group overflow-hidden rounded-[2rem] border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-2xl"
-              >
-                <div className="relative flex h-64 items-center justify-center overflow-hidden bg-[linear-gradient(135deg,#88a9c7_0%,#8cb3d5_28%,#0f3d78_72%,#021c36_100%)] px-8">
-                  <img
-                    src={item.image}
-                    alt={item.model}
-                    className="relative z-10 max-h-48 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute left-4 top-4 z-20 rounded-full bg-white/92 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-blue-700 shadow-lg ring-1 ring-black/5 sm:px-4 sm:text-xs">
-                    {t("inventory.warrantyBadge")}
-                  </div>
-                  <img
-                    src="/images/badges/used-premium-sticker.png"
-                    alt="Wayne Kerr Premium Used badge"
-                    className="absolute bottom-4 right-4 z-20 h-14 w-14 rounded-full bg-white/85 p-1 shadow-xl ring-1 ring-black/5 sm:h-16 sm:w-16"
-                  />
-                  <div
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_34%)]"
-                    aria-hidden="true"
-                  />
-                </div>
+              (() => {
+                const inventoryLabel = item.serialNumber ? t("detail.serialNumber") : t("inventory.stockRef");
+                const inventoryValue = item.serialNumber ?? item.stockReference;
 
-                <div className="p-6">
-                  <p className="text-sm font-semibold uppercase tracking-[0.12em] text-blue-600">
-                    {item.family}
-                  </p>
-                  <h3 className="mt-3 text-[2rem] font-semibold leading-tight text-gray-950">
-                    {item.model}
-                  </h3>
-                  <p className="mt-2 text-xl font-semibold leading-tight text-gray-950">
-                    {item.title}
-                  </p>
-
-                  <p className={`mt-4 min-h-[84px] text-base leading-8 ${TEXT_SECONDARY}`}>
-                    {item.shortDescription}
-                  </p>
-
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {item.groupTags.slice(0, 1).map((tag) => (
-                      <span
-                        key={`${item.slug}-${tag}`}
-                        className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                    <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-                      {item.frequencyRange}
-                    </span>
-                  </div>
-
-                  <div className="mt-5 flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <MapPin size={16} />
-                      <span>{item.location}</span>
+                return (
+                  <article
+                    key={item.slug}
+                    className="group overflow-hidden rounded-[2rem] border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-2xl"
+                  >
+                    <div className="relative flex h-64 items-center justify-center overflow-hidden bg-[linear-gradient(135deg,#88a9c7_0%,#8cb3d5_28%,#0f3d78_72%,#021c36_100%)] px-8">
+                      <img
+                        src={item.image}
+                        alt={item.model}
+                        className="relative z-10 max-h-48 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute left-4 top-4 z-20 rounded-full bg-white/92 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-blue-700 shadow-lg ring-1 ring-black/5 sm:px-4 sm:text-xs">
+                        {t("inventory.warrantyBadge")}
+                      </div>
+                      <img
+                        src="/images/badges/used-premium-sticker.png"
+                        alt="Wayne Kerr Premium Used badge"
+                        className="absolute bottom-4 right-4 z-20 h-14 w-14 rounded-full bg-white/85 p-1 shadow-xl ring-1 ring-black/5 sm:h-16 sm:w-16"
+                      />
+                      <div
+                        className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_34%)]"
+                        aria-hidden="true"
+                      />
                     </div>
-                    <div className="text-right">
-                      <p className="text-xs uppercase tracking-[0.16em] text-gray-500">
-                        {t("inventory.price")}
+
+                    <div className="p-6">
+                      <p className="text-sm font-semibold uppercase tracking-[0.12em] text-blue-600">
+                        {item.family}
                       </p>
-                      <p className="text-lg font-semibold text-gray-950">
-                        {item.currency} {formatDisplayPrice(item.price)}
+                      <h3 className="mt-3 text-[2rem] font-semibold leading-tight text-gray-950">
+                        {item.model}
+                      </h3>
+                      <p className="mt-2 text-xl font-semibold leading-tight text-gray-950">
+                        {item.title}
                       </p>
+
+                      <p className={`mt-4 min-h-[84px] text-base leading-8 ${TEXT_SECONDARY}`}>
+                        {item.shortDescription}
+                      </p>
+
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        {item.groupTags.slice(0, 1).map((tag) => (
+                          <span
+                            key={`${item.slug}-${tag}`}
+                            className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                        <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+                          {item.frequencyRange}
+                        </span>
+                      </div>
+
+                      <div className="mt-5 flex items-center justify-between gap-4">
+                        <div className="flex items-center gap-2 text-sm text-gray-500">
+                          <MapPin size={16} />
+                          <span>{item.location}</span>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-xs uppercase tracking-[0.16em] text-gray-500">
+                            {t("inventory.price")}
+                          </p>
+                          <p className="text-lg font-semibold text-gray-950">
+                            {item.currency} {formatDisplayPrice(item.price)}
+                          </p>
+                        </div>
+                      </div>
+
+                      <p className="mt-3 text-xs font-medium uppercase tracking-[0.14em] text-gray-500">
+                        {inventoryLabel}: {inventoryValue}
+                      </p>
+                      <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">
+                        {t("inventory.singleUnitAvailability")}
+                      </p>
+
+                      <div className="mt-6 flex gap-3">
+                        <Link
+                          href={`/${locale}/equipment/${item.slug}`}
+                          className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+                        >
+                          {t("inventory.details")}
+                        </Link>
+                        <Link
+                          href={buildUsedEquipmentContactHref(locale, item.model, inventoryValue, prefillCopy)}
+                          className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl border border-blue-600 px-4 py-3 text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-50"
+                        >
+                          {t("inventory.contactUs")}
+                          <ArrowRight size={16} />
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-
-                  <p className="mt-3 text-xs font-medium uppercase tracking-[0.14em] text-gray-500">
-                    {t("inventory.stockRef")}: {item.stockReference}
-                  </p>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">
-                    {t("inventory.singleUnitAvailability")}
-                  </p>
-
-                  <div className="mt-6 flex gap-3">
-                    <Link
-                      href={`/${locale}/equipment/${item.slug}`}
-                      className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
-                    >
-                      {t("inventory.details")}
-                    </Link>
-                    <Link
-                      href={buildUsedEquipmentContactHref(locale, item.model, item.stockReference, prefillCopy)}
-                      className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl border border-blue-600 px-4 py-3 text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-50"
-                    >
-                      {t("inventory.contactUs")}
-                      <ArrowRight size={16} />
-                    </Link>
-                  </div>
-                </div>
-              </article>
+                  </article>
+                );
+              })()
             ))}
           </div>
         )}
