@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
@@ -63,6 +64,7 @@ export default async function LocaleLayout({
           {children}
           <StoreFooter />
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
